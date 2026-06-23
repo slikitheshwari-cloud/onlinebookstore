@@ -2,6 +2,7 @@ Django==2.1.2
 Pillow
 qrcode
 django-crispy-forms==1.8.1
+django-bootstrap4==0.0.8
 xhtml2pdf
 gunicorn
 whitenoise
