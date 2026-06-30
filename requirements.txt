@@ -2,7 +2,7 @@ Django==2.1.2
 Pillow
 qrcode
 django-crispy-forms==1.8.1
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+crispy-bootstrap5
 xhtml2pdf
 gunicorn
 whitenoise
