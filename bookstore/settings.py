@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 """
 DATABASES = {
     'default': {
