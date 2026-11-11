@@ -25,10 +25,10 @@
 			{% block container %}
 			<div class="row">
 				<div class="col-sm-12">
-					<div style="margin:0 auto;">
+					<div class="homepage-slider">
 						<ul id="demo3">
 							{% for sld in slide %}
-							<li><img height="100" src="{{ sld.slideimg.url }}"/></li>
+							<li><img src="{{ sld.slideimg.url }}" alt="Featured book"/></li>
 							{% endfor %}
 						</ul>
 					</div>

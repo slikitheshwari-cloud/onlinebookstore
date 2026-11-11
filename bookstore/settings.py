@@ -15,8 +15,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#*k)9t8vzu)4j2hr=l@)emxs^ev%6z5)ri$q4g4%nb^n+pr37y'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Keep Django's static-file server available during local development. Set
+# DJANGO_DEBUG=False in a deployed environment, where WhiteNoise serves the
+# collected static files instead.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = [
     "onlinebookstore-scbi.onrender.com",
@@ -125,7 +127,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+] if os.path.isdir(os.path.join(BASE_DIR, 'static')) else []
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 

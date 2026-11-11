@@ -13,4 +13,5 @@ urlpatterns = [
 	path('category/<int:id>', views.get_book_category, name="category"),
 	path('writer/<int:id>', views.get_writer, name = "writer"),
     path('admin_login/', views.admin_login, name='admin_login'),
+	path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
 ]

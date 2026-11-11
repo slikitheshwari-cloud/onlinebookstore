@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Category, Writer, Book, Review, Slider
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .forms import RegistrationForm, ReviewForm
 
@@ -110,6 +111,8 @@ def get_book_category(request, id):
     return render(request, "store/category.html", {"book":book})
 
 def admin_login(request):
+    if request.user.is_authenticated and request.user.is_staff:
+        return redirect('store:admin_dashboard')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -118,11 +121,22 @@ def admin_login(request):
 
         if user is not None and user.is_superuser:
             login(request, user)
-            return redirect('/admin/')
+            return redirect('store:admin_dashboard')
         else:
             messages.error(request, 'Invalid Admin Credentials')
 
     return render(request, 'store/admin_login.html')
+
+
+@user_passes_test(lambda user: user.is_staff, login_url='store:admin_login')
+def admin_dashboard(request):
+    context = {
+        'book_count': Book.objects.count(),
+        'category_count': Category.objects.count(),
+        'writer_count': Writer.objects.count(),
+        'recent_books': Book.objects.order_by('-updated')[:5],
+    }
+    return render(request, 'store/admin_dashboard.html', context)
 def get_writer(request, id):
     wrt = get_object_or_404(Writer, id=id)
     book = Book.objects.filter(writer_id=wrt.id)

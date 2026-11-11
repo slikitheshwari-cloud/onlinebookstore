@@ -704,3 +704,26 @@ ul.pages>li>img{
   height:50px;
   background:#ffffff
 }
+
+/* Administrator dashboard */
+.admin-dashboard { max-width: 1050px; margin: 32px auto; padding: 0 15px 30px; }
+.admin-dashboard__heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 24px; }
+.admin-dashboard__heading h1 { margin: 0 0 8px; color: #172637; }
+.admin-dashboard__heading p { margin: 0; color: #5e6872; }
+.admin-dashboard__eyebrow { color: #b87800 !important; font-size: 12px; font-weight: bold; letter-spacing: .12em; text-transform: uppercase; }
+.admin-dashboard__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.admin-dashboard__stats article { background: #172637; border-radius: 8px; color: #fff; padding: 20px; text-align: center; }
+.admin-dashboard__stats strong { display: block; color: #ffc107; font-size: 30px; }
+.admin-dashboard__stats span { font-size: 14px; }
+.admin-dashboard__actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.admin-dashboard__actions a { align-items: center; border: 1px solid #e2e6ea; border-radius: 8px; color: #172637; display: flex; font-family: Arial, Helvetica, sans-serif; gap: 14px; padding: 20px; text-decoration: none; }
+.admin-dashboard__actions a:hover { border-color: #ffc107; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.admin-dashboard__actions i { color: #e5a800; font-size: 30px; }
+.admin-dashboard__actions strong, .admin-dashboard__actions small { display: block; }
+.admin-dashboard__actions small { color: #69727c; margin-top: 4px; }
+.admin-dashboard__recent { border: 1px solid #e2e6ea; border-radius: 8px; margin-top: 24px; padding: 20px; }
+.admin-dashboard__recent h2 { font-size: 20px; margin-top: 0; }
+.admin-dashboard__recent ul { margin: 0; padding: 0; }
+.admin-dashboard__recent li { align-items: center; border-top: 1px solid #eee; display: flex; justify-content: space-between; padding: 12px 0; }
+.admin-dashboard__recent a { color: #0066c0; font-family: Arial, Helvetica, sans-serif; }
+@media (max-width: 600px) { .admin-dashboard__heading { align-items: flex-start; flex-direction: column; } .admin-dashboard__stats, .admin-dashboard__actions { grid-template-columns: 1fr; } }

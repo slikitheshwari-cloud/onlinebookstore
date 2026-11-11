@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+
+{% block container %}
+<section class="admin-dashboard">
+  <div class="admin-dashboard__heading">
+    <div>
+      <p class="admin-dashboard__eyebrow">Administration</p>
+      <h1>Bookstore dashboard</h1>
+      <p>Manage your catalogue without changing the customer storefront.</p>
+    </div>
+    <a class="btn btn-warning" href="{% url 'store:index' %}">View store</a>
+  </div>
+
+  <div class="admin-dashboard__stats">
+    <article><strong>{{ book_count }}</strong><span>Books</span></article>
+    <article><strong>{{ category_count }}</strong><span>Categories</span></article>
+    <article><strong>{{ writer_count }}</strong><span>Writers</span></article>
+  </div>
+
+  <div class="admin-dashboard__actions">
+    <a href="{% url 'admin:store_book_add' %}"><i class="fa fa-plus-circle"></i><span><strong>Add a book</strong><small>Create a new catalogue entry.</small></span></a>
+    <a href="{% url 'admin:store_book_changelist' %}"><i class="fa fa-pencil-square-o"></i><span><strong>Manage books</strong><small>Edit or delete existing books.</small></span></a>
+    <a href="{% url 'admin:store_category_changelist' %}"><i class="fa fa-folder-open"></i><span><strong>Categories</strong><small>Add or update categories.</small></span></a>
+    <a href="{% url 'admin:store_writer_changelist' %}"><i class="fa fa-user"></i><span><strong>Writers</strong><small>Add or update writers.</small></span></a>
+  </div>
+
+  <div class="admin-dashboard__recent">
+    <h2>Recently updated books</h2>
+    {% if recent_books %}
+      <ul>
+        {% for book in recent_books %}
+          <li><span>{{ book.name }}</span><a href="{% url 'admin:store_book_change' book.id %}">Edit</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No books have been added yet.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

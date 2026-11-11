@@ -1,13 +1,13 @@
 {% load static %}
 <div class="header-top">
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3">
+		<div class="row header-row">
+			<div class="col-sm-3 header-brand">
 				<div class="pull-left">
 					<a href="{% url 'store:index' %}"><img src="{% static 'images/logo/logo.png' %}" alt="" /></a>
 				</div>
 			</div>
-			<div class="col-sm-5">
+			<div class="col-sm-5 header-search">
 				<form action="{% url 'search:search' %}" method="GET">
 					<div class="input-group search_box">
 						<input type="text" class="form-control" placeholder="Search Book" name="q" value="{{search}}">
@@ -15,7 +15,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4 header-actions">
 				<div class="pull-right">
 					<ul class="navbar-nav">
 						{% if request.user.is_authenticated %}
@@ -31,6 +31,9 @@
 					    		<i class="fa fa-angle-right"></i>
 					    	</a>
 					    </li>
+				    {% if request.user.is_staff %}
+				    <li class="admin-link"><a href="{% url 'store:admin_dashboard' %}"><i class="fa fa-dashboard"></i> Admin</a></li>
+				    {% endif %}
 					    {% else %}
 					    <li class="profile"><a href="{% url 'store:signin' %}">Sign In</a></li>
 					    <li class="cart">
@@ -39,6 +42,7 @@
 					    		<i class="fa fa-angle-right"></i>
 					    	</a>
 					    </li>
+				    <li class="admin-link"><a href="{% url 'store:admin_login' %}"><i class="fa fa-lock"></i> Admin</a></li>
 					    {% endif %}
 					</ul>
 				</div>
